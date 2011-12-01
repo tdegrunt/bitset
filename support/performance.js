@@ -1,4 +1,4 @@
-var BitSet = require('./lib/bitset');
+var BitSet = require('../lib/bitset');
 var _ = require('underscore');
 
 var NR_OF_BITS=10000000;

@@ -9,10 +9,12 @@ This module implements an array of bits, that grows as needed. It can be used fr
     });
 
     console.dir(bs);
+
+Mind you: The example uses [underscore.js](http://documentcloud.github.com/underscore/)
  
 Usage
 -----
-This is very useful for realtime metrics with for example Redis. 
+This is very useful for realtime metrics with for example Redis.
 
 Installation
 ------------
@@ -28,4 +30,4 @@ It performs pretty well, you can try the performance.js in the support folder. T
 
 Tests
 -----
-Testing is done via mocha (cake test)
+Testing is done via the excellent [mocha](http://visionmedia.github.com/mocha) (cake test)
