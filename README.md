@@ -1,5 +1,31 @@
-https://developer.mozilla.org/en/JavaScript/Reference/Operators/Bitwise_Operators
-http://dreaminginjavascript.wordpress.com/2009/02/09/bitwise-byte-foolish/
-http://www.koders.com/javascript/fidC2027CDBAA7E6B41346794DFB1DF74BADC063FF5.aspx?s=var#L49
-http://www.java2s.com/Open-Source/Java-Document/6.0-JDK-Core/Collections-Jar-Zip-Logging-regex/java/util/BitSet.java.htm
-http://en.wikipedia.org/wiki/Binary_numeral_system  
+BitSet
+======
+This module implements an array of bits, that grows as needed. It can be used from both JavaScript as well as CoffeeScript.
+
+    var bs = new BitSet(31);
+
+    _(12).times(function(n){ 
+      bs.set(n);
+    });
+
+    console.dir(bs);
+ 
+Usage
+-----
+This is very useful for realtime metrics with for example Redis. 
+
+Installation
+------------
+npm install bitset
+
+Performance
+-----------
+It performs pretty well, you can try the performance.js in the support folder. This is the output with a 31 bit word size and 10.000.000 bits:
+
+    set 10000000 bits: 418ms
+    cardinality 10000000
+    cardinality: 150ms
+
+Tests
+-----
+Testing is done via mocha (cake test)
