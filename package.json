@@ -2,11 +2,13 @@
   "author": "Tom de Grunt <tom@degrunt.nl>",
   "name": "bitset",
   "description": "BitSet implementation for JavaScript",
-  "version": "0.0.0",
+  "keywords": ["bit", "bitset", "metrics"],
+  "version": "0.1.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/tdegrunt/bitset"
   },
-  "main": "lib/bitset.js",
+  "main": "./lib/bitset.js",
   "engines": {
     "node": "~0.6.2"
   },
