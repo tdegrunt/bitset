@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/tdegrunt/bitset.png)](http://travis-ci.org/tdegrunt/bitset)
+
 BitSet
 ======
 This module implements an array of bits, that grows as needed. It can be used from both JavaScript as well as CoffeeScript.
