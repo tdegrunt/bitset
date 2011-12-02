@@ -12,6 +12,13 @@
   "engines": {
     "node": "~0.6.2"
   },
+  "scripts": {
+    "test": "cake test"
+  },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "should": "0.3",
+    "mocha": "0.1",
+    "coffee-script": "1.1"
+  }
 }
