@@ -1,9 +1,9 @@
 var BitSet = require('../lib/bitset');
 var _ = require('underscore');
 
-var NR_OF_BITS=10000000;
+var NR_OF_BITS=100000000;
 
-var bs = new BitSet(31);
+var bs = new BitSet();
 
 console.time("set "+NR_OF_BITS+" bits");
 _(NR_OF_BITS).times(function(n){ 
