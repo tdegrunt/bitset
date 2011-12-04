@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/tdegrunt/bitset.png)](http://travis-ci.org/tdegrunt/bitset)
+ [![Build Status](https://secure.travis-ci.org/tdegrunt/bitset.png)](http://travis-ci.org/tdegrunt/bitset)
 
 BitSet
 ======
@@ -31,7 +31,7 @@ BitSets are very useful for realtime metrics. If you want to count the number of
     # The User class
     class User
       @login: (userName, password) ->
-    todaysUserCount.set @userId
+        todaysUserCount.set @userId
         
     # In reporting code
     todaysUserCount.cardinality()
