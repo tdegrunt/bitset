@@ -3,7 +3,7 @@
   "name": "bitset",
   "description": "BitSet implementation for JavaScript",
   "keywords": ["bit", "bitset", "metrics"],
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tdegrunt/bitset"
@@ -15,6 +15,10 @@
   "scripts": {
     "test": "cake test"
   },
+  "directories": {
+    "lib": "./lib"
+  },
+  "files": ["README.md", "./lib", "./src", "./support", "./test"],
   "dependencies": {},
   "devDependencies": {
     "should": "0.3",
