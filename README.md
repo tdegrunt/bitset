@@ -2,21 +2,57 @@
 
 BitSet
 ======
-This module implements an array of bits, that grows as needed. It can be used from both JavaScript as well as CoffeeScript.
+This module implements an array of bits, that grows as needed. It can be used from both JavaScript: 
 
     var bs = new BitSet();
 
-    _(12).times(function(n){ 
+    for(var n = 0; n < 12; n++) {
       bs.set(n);
-    });
+    }
 
     console.dir(bs);
 
-Mind you: The example uses [underscore.js](http://documentcloud.github.com/underscore/)
- 
+as well as CoffeeScript:
+
+    bs = new BitSet
+
+    bs.set 1
+    bs.clear 1
+
+    console.log bs.toString()
+  
 Usage
 -----
-This is very useful for realtime metrics with for example Redis.
+BitSets are very useful for realtime metrics. If you want to count the number of active users (CoffeeScript):
+
+    # Somewhere in application code
+    todaysUserCount = new Bitset
+        
+    # The User class
+    class User
+      @login: (userName, password) ->
+    todaysUserCount.set @userId
+        
+    # In reporting code
+    todaysUserCount.cardinality()
+    
+Documentation
+-------------
+
+* `BitSet#set(pos)` - sets the bit on position pos to true
+* `BitSet#get(pos)` - returns whether the bit on position pos is set
+* `BitSet#clear(pos)` - clears the bit on position pos
+* `BitSet#length` - returns the logical length of the bitset
+* `BitSet#wordLength` - returns the word-length of the bitset
+* `BitSet#cardinality` - returns how many bits are set to true in the bitset
+* `BitSet#toString` - returns a string representation of the bitset
+* `BitSet#toBinaryString` - returns a binary string representation of the bitset
+* `BitSet#or(bitset)` - OR's this bitset with the argument bitset
+* `BitSet#and(bitset)` - AND's this bitset with the argument bitset
+* `BitSet#andNot(bitset)` - ANDNOT's this bitset with the argument bitset
+* `BitSet#xor(bitset)` - XOR's this bitset with the argument bitset
+
+For details see src/bitset.coffee
 
 Installation
 ------------

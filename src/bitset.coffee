@@ -5,13 +5,13 @@ module.exports = class BitSet
   constructor: ->
     @bitsPerWord = 32
     @addressBitsPerWord = 5
-    @bitIndexMask = @bitsPerWord - 1
     @store = []
-    
-  wordIndex: (bitIndex) ->
-    bitIndex >> @addressBitsPerWord
 
-  # Sets the bit at position pos to 1
+  # Given a bit position pos, return word index containing it
+  wordIndex: (pos) ->
+    pos >> @addressBitsPerWord
+
+  # Sets the bit at position pos to true
   set: (pos) ->
     @store[@wordIndex(pos-1)] |= (1 << pos-1)
 
@@ -23,39 +23,50 @@ module.exports = class BitSet
   get: (pos) ->
     ((@store[@wordIndex(pos-1)] & (1 << pos-1)) != 0)
   
-  # Returns the logical length
+  # Returns the logical length of this BitSet: the index of the highest set bit plus one.
+  # Returns zero if the BitSet contains no set bits
   length: ->
     if @wordLength() is 0
       0 
     else
       @bitsPerWord * (@wordLength()-1) + (@store[@wordLength()-1].toString(2).length+1)
     
-  # Returns the word length
+  # Returns the number of words in use for this BitSet
   wordLength: ->
-    if @store.length is 1 and @store[0] is 0
-      0
-    else
-      @store.length
+    length = @store.length
+    for pos in [@store.length-1..0]
+      break if @store[pos] isnt 0
+      length--
+
+    length
     
-  # Returns the store
+  # Returns the bit-store
   store: ->
     @store
 
-  # Returns the cardinality of the BitSet, ie the number of bits which are set to 1
+  # Returns the cardinality of the BitSet, ie the number of bits which are set to true
   cardinality: ->
     sum = 0
     for pos in [0..@length()]
       sum++ if @get(pos)
     sum
 
-  # Returns a string representation of the BitSet
+  # Returns a string representation of this bitset. For every bit set to true, it will include
+  # a decimal representation in the result.
   toString: ->
+    result = []
+    for pos in [0..@length()]
+      result.push pos if @get(pos)
+    "{#{result.join(",")}}"
+
+  # Returns a binary string representation of the BitSet
+  toBinaryString: ->
     lpad = (str, padString, length) ->
       while str.length < length
         str = padString + str
       str
     
-    if @store.length > 0
+    if @wordLength() > 0
       @store.map( (word) => lpad(word.toString(2), '0', @bitsPerWord)).join('')
     else
       lpad('', 0, @bitsPerWord)
