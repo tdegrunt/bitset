@@ -71,6 +71,20 @@ module.exports = class BitSet
     else
       lpad('', 0, @bitsPerWord)
     
+  # Returns the integer value of the BitSet
+  toInt: ->
+    result = 0
+    for value, pos in @store
+      for foo in Array(pos)
+        value = value * 2147483648
+
+      if value < 0
+        result = result - value
+      else
+        result = result + value
+
+    result
+
   # Performs a logical OR of this BitSet and the argument BitSet
   or: (set) -> 
     return if @ is set

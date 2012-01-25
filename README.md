@@ -47,6 +47,7 @@ Documentation
 * `BitSet#cardinality` - returns how many bits are set to true in the bitset
 * `BitSet#toString` - returns a string representation of the bitset
 * `BitSet#toBinaryString` - returns a binary string representation of the bitset
+* `BitSet#toInt` - returns an integer representation of the bitset
 * `BitSet#or(bitset)` - OR's this bitset with the argument bitset
 * `BitSet#and(bitset)` - AND's this bitset with the argument bitset
 * `BitSet#andNot(bitset)` - ANDNOT's this bitset with the argument bitset
