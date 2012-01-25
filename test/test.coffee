@@ -14,6 +14,8 @@ describe 'BitSet when first created', ->
     bs.toBinaryString().length.should.eql 32
   it 'toString() should be {}', ->
     bs.toString().should.eql "{}"
+  it 'toInt() should be 0', ->
+    bs.toInt().should.eql 0
 
 describe 'BitSet with bit 1 set', ->
   bs = new BitSet
@@ -32,6 +34,8 @@ describe 'BitSet with bit 1 set', ->
     bs.toBinaryString().length.should.eql 32
   it 'toString() should be {1}', ->
     bs.toString().should.eql "{1}"
+  it 'toInt() should be 1', ->
+    bs.toInt().should.eql 1
 
 describe 'BitSet with bit 1 set and cleared', ->
   bs = new BitSet
@@ -53,6 +57,8 @@ describe 'BitSet with bit 1 set and cleared', ->
     bs.toBinaryString().length.should.eql 32
   it 'toString() should be {}', ->
     bs.toString().should.eql "{}"
+  it 'toInt() should be 0', ->
+    bs.toInt().should.eql 0
 
 describe 'BitSet with bit 1 and 33 set', ->
   bs = new BitSet
@@ -74,6 +80,8 @@ describe 'BitSet with bit 1 and 33 set', ->
     bs.toBinaryString().length.should.eql 64
   it 'toString() should be {1,33}', ->
     bs.toString().should.eql "{1,33}"
+  it 'toInt() should be 2147483649', ->
+    bs.toInt().should.eql 2147483649
 
 describe 'BitSet A with bit 1 set OR-ed with BitSet B with bit 33 set', ->
   bsa = new BitSet
@@ -99,6 +107,8 @@ describe 'BitSet A with bit 1 set OR-ed with BitSet B with bit 33 set', ->
     bsa.toBinaryString().length.should.eql 64
   it 'toString() should be {1,33}', ->
     bsa.toString().should.eql "{1,33}"
+  it 'toInt() should be 2147483649', ->
+    bsa.toInt().should.eql 2147483649
 
 describe 'BitSet A with bit 1 set AND-ed with BitSet B with bit 33 set', ->
   bsa = new BitSet
@@ -124,6 +134,8 @@ describe 'BitSet A with bit 1 set AND-ed with BitSet B with bit 33 set', ->
     bsa.toBinaryString().length.should.eql 32
   it 'toString() should be {}', ->
     bsa.toString().should.eql "{}"
+  it 'toInt() should be 0', ->
+    bsa.toInt().should.eql 0
 
 describe 'BitSet A with bit 1 set ANDNOT-ed with BitSet B with bit 33 set', ->
   bsa = new BitSet
@@ -149,6 +161,8 @@ describe 'BitSet A with bit 1 set ANDNOT-ed with BitSet B with bit 33 set', ->
     bsa.toBinaryString().length.should.eql 32
   it 'toString() should be {1}', ->
     bsa.toString().should.eql "{1}"
+  it 'toInt() should be 1', ->
+    bsa.toInt().should.eql 1
 
 describe 'BitSet A with bit 1 & bit 2 set XOR-ed with BitSet B with bit 33 & bit 2 set', ->
   bsa = new BitSet
@@ -176,3 +190,5 @@ describe 'BitSet A with bit 1 & bit 2 set XOR-ed with BitSet B with bit 33 & bit
     bsa.toBinaryString().length.should.eql 64
   it 'toString() should be {1,33}', ->
     bsa.toString().should.eql "{1,33}"
+  it 'toInt() should be 2147483649', ->
+    bsa.toInt().should.eql 2147483649
