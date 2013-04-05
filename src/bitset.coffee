@@ -27,7 +27,7 @@ module.exports = class BitSet
   # Returns zero if the BitSet contains no set bits
   length: ->
     if @wordLength() is 0
-      0 
+      0
     else
       @bitsPerWord * (@wordLength()-1) + (@store[@wordLength()-1].toString(2).length+1)
     
@@ -112,3 +112,30 @@ module.exports = class BitSet
     for pos in [0..@wordLength()]
       @store[pos] ^= set.store[pos]
     null
+
+  isEmpty: ->
+    return @length() == 0
+
+  nextSetBit: (fromIndex) ->
+    return nextValueFrom.call this, true, fromIndex, 1
+
+  nextClearBit: (fromIndex) ->
+    return nextValueFrom.call this, false, fromIndex, 1
+
+  previousSetBit: (fromIndex) ->
+    return nextValueFrom.call this, true, fromIndex, -1
+
+  previousClearBit: (fromIndex) ->
+    return nextValueFrom.call this, false, fromIndex, -1
+
+  nextValueFrom = (value, from, increment, maxIndex) ->
+    check = null
+    pos = from
+    
+    while pos >= 0 && pos <= @bitsPerWord
+      pos += increment
+      check = @get(pos)
+      return pos if check == value
+
+    null
+

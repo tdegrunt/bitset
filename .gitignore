@@ -1,0 +1,5 @@
+*.swp
+*.swo
+.DS_Store
+[tT]humbs.db
+node_modules/
