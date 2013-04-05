@@ -3,7 +3,7 @@
   "name": "bitset",
   "description": "BitSet implementation for JavaScript",
   "keywords": ["bit", "bitset", "metrics"],
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/srounce/bitset"
