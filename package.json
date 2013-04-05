@@ -3,14 +3,14 @@
   "name": "bitset",
   "description": "BitSet implementation for JavaScript",
   "keywords": ["bit", "bitset", "metrics"],
-  "version": "0.2.0",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tdegrunt/bitset"
+    "url": "https://github.com/srounce/bitset"
   },
   "main": "./lib/bitset.js",
   "engines": {
-    "node": "~0.6.2"
+    "node": ">= 0.6.2"
   },
   "scripts": {
     "test": "cake test"
@@ -20,5 +20,9 @@
     "should": "0.3",
     "mocha": "0.1",
     "coffee-script": "1.1"
-  }
+  },
+  "contributors" : [
+    "Tom de Grunt <tom@degrunt.nl> (http://www.degrunt.nl)",
+    "Samuel Rounce <samuelrounce+node-bitset@gmail.com>"
+  ]
 }
