@@ -39,10 +39,6 @@ module.exports = class BitSet
       length--
 
     length
-    
-  # Returns the bit-store
-  store: ->
-    @store
 
   # Returns the cardinality of the BitSet, ie the number of bits which are set to true
   cardinality: ->
