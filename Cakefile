@@ -30,7 +30,7 @@ task 'watch', 'Recompile CoffeeScript source files when modified', ->
 
 task 'test', 'Run the test suite', ->
   build ->
-    options = ['--require', 'should','-R', 'spec', '--colors']
+    options = ['--require', 'should', '--reporter', 'spec', '--compilers', 'coffee:coffee-script', '--colors']
 
     mocha = spawn 'mocha', options
     mocha.stdout.on 'data', (data) -> print data.toString()

@@ -2,6 +2,25 @@
 # It aims to be compatible with the [Java implementation](http://bit.ly/sem9RQ)
 module.exports = class BitSet
   
+  HAMMING_TABLE = [ 
+    0, # 0b0000
+    1, # 0b0001
+    1, # 0b0010
+    2, # 0b0011
+    1, # 0b0100
+    2, # 0b0101
+    2, # 0b0110
+    3, # 0b0111
+    1, # 0b1000
+    2, # 0b1001
+    2, # 0b1010
+    3, # 0b1011
+    2, # 0b1100
+    3, # 0b1101
+    3, # 0b1110
+    4  # 0b1111
+  ]
+
   constructor: ->
     @bitsPerWord = 32
     @addressBitsPerWord = 5
@@ -13,15 +32,15 @@ module.exports = class BitSet
 
   # Sets the bit at position pos to true
   set: (pos) ->
-    @store[@wordIndex(pos-1)] |= (1 << pos-1)
+    @store[@wordIndex(pos)] |= (1 << pos)
 
   # Clears the bit at position pos
   clear: (pos) ->
-    @store[@wordIndex(pos-1)] &= (0xFF ^ (1 << pos-1))
+    @store[@wordIndex(pos)] &= (0xFF ^ (1 << pos))
     
   # Returns whether the bit at position pos is set (returns true or false)
   get: (pos) ->
-    ((@store[@wordIndex(pos-1)] & (1 << pos-1)) != 0)
+    ((@store[@wordIndex(pos)] & (1 << pos)) != 0)
   
   # Returns the logical length of this BitSet: the index of the highest set bit plus one.
   # Returns zero if the BitSet contains no set bits
@@ -29,7 +48,7 @@ module.exports = class BitSet
     if @wordLength() is 0
       0 
     else
-      @bitsPerWord * (@wordLength()-1) + (@store[@wordLength()-1].toString(2).length+1)
+      @bitsPerWord * (@wordLength()-1) + (@store[@wordLength()-1].toString(2).length)
     
   # Returns the number of words in use for this BitSet
   wordLength: ->
@@ -39,17 +58,20 @@ module.exports = class BitSet
       length--
 
     length
-    
-  # Returns the bit-store
-  store: ->
-    @store
 
   # Returns the cardinality of the BitSet, ie the number of bits which are set to true
   cardinality: ->
     sum = 0
-    for pos in [0..@length()]
-      sum++ if @get(pos)
-    sum
+    for word in @store
+      sum += HAMMING_TABLE[ (word >> 0x00) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x04) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x08) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x0C) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x10) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x14) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x18) & 0xF ]
+      sum += HAMMING_TABLE[ (word >> 0x1C) & 0xF ]
+    return sum
 
   # Returns a string representation of this bitset. For every bit set to true, it will include
   # a decimal representation in the result.
