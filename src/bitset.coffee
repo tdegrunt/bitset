@@ -1,6 +1,6 @@
 # **BitSet** implementation for JavaScript, written in CoffeeScript.
 # It aims to be compatible with the [Java implementation](http://bit.ly/sem9RQ)
-module.exports = class BitSet
+@['BitSet'] = class BitSet
   
   HAMMING_TABLE = [ 
     0, # 0b0000
