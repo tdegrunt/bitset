@@ -68,7 +68,7 @@ It performs pretty well, you can try the performance.js in the support folder. T
 
 Tests
 -----
-Testing is done via the excellent [mocha](http://visionmedia.github.com/mocha) (cake test)
+Testing is done via the excellent [mocha](http://mochajs.org/) (cake test)
 
 ## License
 
